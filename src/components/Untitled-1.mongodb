@@ -1,0 +1,37 @@
+// Select the database to use.
+use('trainingInformation');
+
+// The drop() command destroys all data from a collection.
+db.testAnswersGreen.drop();
+
+// db.testAnswersRed.insertOne([
+// {"studentID":"01","hoursStudied":1,"lastStudied":"23/10/2022 morning","actualLastStudied":"2022-10-01T21:25:27.115Z","actualListens":0,"submitTime":"Sun Oct 23 2022 02:42:35 GMT+0300 (Eastern European Summer Time)","A_023":"dregni","A_017":"","A_008":"","A_021":"","KL_033":"","KL-056":"","H_008":"","KL_055":"","KL_057":""}
+// ]);
+
+/* db.testAnswersWithoutPractice.insertOne([
+{"studentID":"999","hoursStudied":1,"lastStudied":"23/10/2022 morning","actualLastStudied":"Sun Oct 23 2022 02:26:23 GMT+0300 (Eastern European Summer Time)","actualListens":1,"submitTime":"Sun Oct 23 2022 02:34:26 GMT+0300 (Eastern European Summer Time)","KL_054_B":"sausi","A_017":"","KL_039":"","KL_002":"sausi","A_019":"","KL-058":"","KL_026":"sausi","KL_014":"","KL_055":"dregni"}
+]); */
+
+// db.testAnswersBlue.insertOne([
+// {"studentID":"999","hoursStudied":1,"lastStudied":"30/10/2022 morning","actualLastStudied":"2022-10-01T21:25:27.115Z","actualListens":0,"submitTime":"Sun Oct 30 2022 03:24:57 GMT+0200 (Eastern European Standard Time)","KL_054_B":"sausi","KL_044":"sausi","KL_039":"dregni","KL_002":"","A_019":"","KL-058":"sausi","KL_026":"","KL_014":"","KL_055":""}
+// ]);
+
+
+db.testAnswersGreen.insertOne([
+{"studentID":"999","hoursStudied":1,"lastStudied":"30/10/2022 morning","actualLastStudied":"2022-10-01T21:25:27.115Z","actualListens":0,"submitTime":"Sun Oct 30 2022 03:27:00 GMT+0200 (Eastern European Standard Time)","A_026":"sausi","A_002":"dregni","A_003":"sausi","H_006":"dregni","H_003":"","KL-058_B":"","H_008":"dregni","H_002":"","KL_057_B":""}
+]);
+
+
+
+// db.trainingData.insertMany([
+//   {"_id":1,"date":"2022-10-01T21:25:27.115Z", "listens": 0},
+//   {"_id":2,"date":"2022-10-01T21:25:27.115Z", "listens": 0},
+//   {"_id":3,"date":"2022-10-01T21:25:27.115Z", "listens": 0},
+//   {"_id":4,"date":"2022-10-01T21:25:27.115Z", "listens": 0},
+//   {"_id":5,"date":"2022-10-01T21:25:27.115Z", "listens": 0},
+//   {"_id":6,"date":"2022-10-01T21:25:27.115Z", "listens": 0},
+//   {"_id":7,"date":"2022-10-01T21:25:27.115Z", "listens": 0},
+//   {"_id":8,"date":"2022-10-01T21:25:27.115Z", "listens": 0},
+//   {"_id":9,"date":"2022-10-01T21:25:27.115Z", "listens": 0},
+//   {"_id":10,"date":"2022-10-01T21:25:27.115Z", "listens": 0},
+// ]);
