@@ -186,7 +186,7 @@ const Test = ({ patientArray, type }: TestProps) => {
           />
         </Box>
         {/* randomizuoti testus !!!!!!!!!!!!!!! */}
-        {formValues.studentID && (
+        {formValues.studentID && !error && (
           <>
             {patientValues &&
               Object.keys(patientValues).length !== 0 &&
