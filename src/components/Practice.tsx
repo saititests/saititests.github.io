@@ -45,6 +45,7 @@ const Practice = () => {
         sx={{ mt: 2, mb: 3 }}
       />
       {studentID &&
+        !error &&
         patientsPracticeArray.map((patient) => (
           <PracticePatient
             key={patient.name}
@@ -55,7 +56,7 @@ const Practice = () => {
             error={error}
           />
         ))}
-      {studentID && (
+      {studentID && !error && (
         <>
           <Typography variant="h5" sx={{ my: 4 }}>
             Pavieniai garsai
