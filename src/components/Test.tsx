@@ -10,9 +10,10 @@ import {
 } from "@mui/material";
 import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import dayjs, { Dayjs } from "dayjs";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LanguageContext } from "../App";
 import TestPatient from "./test/TestPatient";
 import { TestPatientData } from "./audio/soundsData";
 import { studentIDs } from "../studentIDs";
@@ -68,6 +69,8 @@ const Test = ({ patientArray, type }: TestProps) => {
   const [shuffledPatientArray, setShuffledPatientArray] = useState<
     TestPatientData[]
   >([]);
+
+  const { language } = useContext(LanguageContext);
 
   useEffect(() => {
     const shuffled = patientArray
@@ -126,11 +129,17 @@ const Test = ({ patientArray, type }: TestProps) => {
           break;
       }
 
-      return alert("Thank you! Your answers have been submitted");
+      return alert(
+        language === "LT"
+          ? "Jūsų atsakymai buvo sėkmingai pateikti"
+          : "Your answers have been submitted successfully"
+      );
     } catch (err) {
       console.error("Failed to save data", err);
       return alert(
-        "An error appeared when saving your answers. Please contact the test"
+        language === "LT"
+          ? "Pateikiant Jūsų atsakymus įvyko klaida. Susisiekite su Haroldu Razvadausku"
+          : "An error appeared when saving your answers. Please contact Haroldas Razvadauskas"
       );
     }
   };
@@ -145,7 +154,11 @@ const Test = ({ patientArray, type }: TestProps) => {
     if (name === "studentID") {
       if (!studentIDs.includes(value)) {
         setError(true);
-        setHelperText("Naudokite gautą studento ID"); //"Use your provided student ID"
+        setHelperText(
+          language === "LT"
+            ? "Naudokite gautą studento ID"
+            : "Use your provided student ID"
+        );
       } else {
         setError(false);
         setHelperText("");
@@ -170,14 +183,15 @@ const Test = ({ patientArray, type }: TestProps) => {
     <div style={{ display: "block" }}>
       <form onSubmit={handleSubmit}>
         <Typography>
-          Atlikti testą galima tik įvedus studento ID
-          {/* You can do the test if student id is entered */}
+          {language === "LT"
+            ? "Atlikti testą galima tik įvedus studento ID"
+            : "You can do the test if student id is entered"}
         </Typography>
         <Box sx={{ mb: 3, mt: 2 }}>
           <TextField
             id="studentID"
             name="studentID"
-            label="Studento ID"
+            label={language === "LT" ? "Studento ID" : "Student ID"}
             value={formValues.studentID}
             onChange={handleInputChange}
             required
@@ -185,7 +199,6 @@ const Test = ({ patientArray, type }: TestProps) => {
             helperText={helperText}
           />
         </Box>
-        {/* randomizuoti testus !!!!!!!!!!!!!!! */}
         {formValues.studentID && !error && (
           <>
             {patientValues &&
@@ -206,7 +219,9 @@ const Test = ({ patientArray, type }: TestProps) => {
               ))}
             <Box sx={{ mb: 4 }}>
               <Typography>
-                Valandos, praleistos mokantis:{/* Hours spent studying: */}
+                {language === "LT"
+                  ? "Valandos, praleistos mokantis:"
+                  : "Hours spent studying:"}
               </Typography>
               <TextField
                 name="hoursStudied"
@@ -220,7 +235,9 @@ const Test = ({ patientArray, type }: TestProps) => {
             </Box>
             <Box sx={{ mb: 4 }}>
               <Typography>
-                Paskutinis mokomųjų įrašų klausymasis:{/* Last studied: */}
+                {language === "LT"
+                  ? "Paskutinis mokomųjų įrašų klausymasis:"
+                  : "Last studied:"}
               </Typography>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DesktopDatePicker
@@ -240,16 +257,16 @@ const Test = ({ patientArray, type }: TestProps) => {
                 sx={{ width: 130, ml: 3 }}
               >
                 <MenuItem key="morning" value="morning">
-                  Ryte
+                  {language === "LT" ? "Ryte" : "Morning"}
                 </MenuItem>
                 <MenuItem key="evening" value="evening">
-                  Vakare
+                  {language === "LT" ? "Vakare" : "Evening"}
                 </MenuItem>
               </Select>
             </Box>
 
             <Button variant="contained" color="primary" type="submit">
-              Pateikti
+              {language === "LT" ? "Pateikti" : "Submit"}
             </Button>
           </>
         )}
