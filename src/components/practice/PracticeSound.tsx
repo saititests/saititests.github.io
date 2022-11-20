@@ -1,8 +1,9 @@
 import * as Realm from "realm-web";
 
 import { Box, Button, Grid, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
+import { LanguageContext } from "../../App";
 import { PatientData } from "../audio/soundsData";
 
 interface PatientProps {
@@ -16,8 +17,10 @@ interface PatientProps {
 const PracticePatient = (props: PatientProps) => {
   const { patient, soundsDisabled, setSoundsDisabled, studentID, error } =
     props;
-  const { name, information } = patient;
+  const { name, information, informationEnglish } = patient;
   const [soundFile, setSoundFile] = useState<string>("");
+
+  const { language } = useContext(LanguageContext);
 
   useEffect(() => {
     function loadSounds() {
@@ -54,7 +57,9 @@ const PracticePatient = (props: PatientProps) => {
     <Box sx={{ mb: 3 }}>
       <Grid container spacing={8}>
         <Grid item xs={6} textAlign="end">
-          <Typography sx={{ mt: 0.75 }}>{information}</Typography>
+          <Typography sx={{ mt: 0.75 }}>
+            {language === "LT" ? information : informationEnglish}
+          </Typography>
         </Grid>
         <Grid item xs={6} textAlign="left">
           <Button
@@ -62,7 +67,7 @@ const PracticePatient = (props: PatientProps) => {
             onClick={() => playAudio()}
             disabled={soundsDisabled || studentID === "" || error}
           >
-            Leisti įrašą
+            {language === "LT" ? "Leisti įrašą" : "Play audio"}
           </Button>
         </Grid>
       </Grid>
