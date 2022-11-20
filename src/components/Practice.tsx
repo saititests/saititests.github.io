@@ -3,24 +3,30 @@ import {
   patientsPracticeArray,
   singlePracticeSounds,
 } from "./audio/soundsData";
+import { useContext, useState } from "react";
 
+import { LanguageContext } from "../App";
 import PracticePatient from "./practice/PracticePatient";
 import PracticeSound from "./practice/PracticeSound";
 import { studentIDs } from "../studentIDs";
-import { useState } from "react";
 
 const Practice = () => {
   const [soundsDisabled, setSoundsDisabled] = useState<boolean>(false);
   const [studentID, setStudentID] = useState<string>("");
   const [error, setError] = useState<boolean>(false);
   const [helperText, setHelperText] = useState<string>("");
+  const { language } = useContext(LanguageContext);
 
   const handleInputChange = (e: any) => {
     const { value } = e.target;
     setStudentID(value);
     if (!studentIDs.includes(value)) {
       setError(true);
-      setHelperText("Naudokite gautą studento ID"); //"Use your provided student ID"
+      setHelperText(
+        language === "LT"
+          ? "Naudokite gautą studento ID"
+          : "Use your provided student ID"
+      );
     } else {
       setError(false);
       setHelperText("");
@@ -30,13 +36,14 @@ const Practice = () => {
   return (
     <div style={{ display: "block" }}>
       <Typography>
-        Klausytis mokomųjų įrašų galima tik įvedus studento ID
-        {/* You can only listen to practice records if student id is entered */}
+        {language === "LT"
+          ? "Klausytis mokomųjų įrašų galima tik įvedus studento ID"
+          : "You can only listen to practice records if student id is entered"}
       </Typography>
       <TextField
         id="studentID"
         name="studentID"
-        label="Studento ID"
+        label={language === "LT" ? "Studento ID" : "Student ID"}
         value={studentID}
         onChange={handleInputChange}
         required
@@ -59,7 +66,7 @@ const Practice = () => {
       {studentID && !error && (
         <>
           <Typography variant="h5" sx={{ my: 4 }}>
-            Pavieniai garsai
+            {language === "LT" ? "Pavieniai garsai" : "Individual sounds"}
           </Typography>
           {singlePracticeSounds.map((patient) => (
             <PracticeSound
