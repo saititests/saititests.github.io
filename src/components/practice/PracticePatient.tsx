@@ -1,8 +1,9 @@
 import * as Realm from "realm-web";
 
 import { Box, Button, Grid, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
+import { LanguageContext } from "../../App";
 import { PatientData } from "../audio/soundsData";
 import backPhoto from "../images/backPhoto.jpg";
 
@@ -23,23 +24,26 @@ interface PatientProps {
 const PracticePatient = (props: PatientProps) => {
   const { patient, soundsDisabled, setSoundsDisabled, studentID, error } =
     props;
-  const { name, information } = patient;
+  const { fileName, name, nameEnglish, information, informationEnglish } =
+    patient;
   const [soundFiles, setSoundFiles] = useState<string[]>([]);
   const [viewInfo, setViewInfo] = useState<boolean>(false);
   const [currentAudioIndex, setCurrentAudioIndex] = useState<string>("");
 
+  const { language } = useContext(LanguageContext);
+
   useEffect(() => {
     function loadSounds() {
-      const file1 = require(`../audio/${name}_1.wav`);
-      const file2 = require(`../audio/${name}_2.wav`);
-      const file3 = require(`../audio/${name}_3.wav`);
-      const file4 = require(`../audio/${name}_4.wav`);
-      const file5 = require(`../audio/${name}_5.wav`);
-      const file6 = require(`../audio/${name}_6.wav`);
+      const file1 = require(`../audio/${fileName}_1.wav`);
+      const file2 = require(`../audio/${fileName}_2.wav`);
+      const file3 = require(`../audio/${fileName}_3.wav`);
+      const file4 = require(`../audio/${fileName}_4.wav`);
+      const file5 = require(`../audio/${fileName}_5.wav`);
+      const file6 = require(`../audio/${fileName}_6.wav`);
       setSoundFiles([file1, file2, file3, file4, file5, file6]);
     }
     loadSounds();
-  }, [name]);
+  }, [fileName]);
 
   const buttons: ButtonConfig[] = [
     {
@@ -142,9 +146,17 @@ const PracticePatient = (props: PatientProps) => {
         </Grid>
         <Grid item xs={6}>
           <Box>
-            <Typography sx={{ mt: 6 }}>Pacientas {name}</Typography>
             <Typography sx={{ mt: 6 }}>
-              <strong>Dabar leidžiamas įrašas: {currentAudioIndex}</strong>
+              {language === "LT" ? "Pacientas" : "Patient"}:{" "}
+              {language === "LT" ? name : nameEnglish}
+            </Typography>
+            <Typography sx={{ mt: 6 }}>
+              <strong>
+                {language === "LT"
+                  ? "Dabar leidžiamas įrašas"
+                  : "Currently playing audio"}
+                : {currentAudioIndex}
+              </strong>
             </Typography>
             <Button
               variant="contained"
@@ -152,7 +164,7 @@ const PracticePatient = (props: PatientProps) => {
               disabled={viewInfo || studentID === "" || error}
               onClick={() => setViewInfo(true)}
             >
-              Peržiūrėti patologiją
+              {language === "LT" ? "Peržiūrėti patologiją" : "View pathology"}
             </Button>
             {viewInfo && (
               <Box
@@ -163,7 +175,7 @@ const PracticePatient = (props: PatientProps) => {
                   mt: 4,
                 }}
               >
-                {information}
+                {language === "LT" ? information : informationEnglish}
               </Box>
             )}
           </Box>
