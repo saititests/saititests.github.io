@@ -1,6 +1,6 @@
 import { Box, Tab, Tabs } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { TabPanel, a11yProps } from "../App";
+import { LanguageContext, TabPanel, a11yProps } from "../App";
+import React, { useContext, useEffect, useState } from "react";
 import Test, { TestType } from "./Test";
 import {
   testBlueArray,
@@ -11,6 +11,7 @@ import {
 const TestsWithWhiteNoise = () => {
   const [value, setValue] = useState(0);
   const [testOrder, setTestOrder] = useState([1, 2, 3]);
+  const { language } = useContext(LanguageContext);
 
   useEffect(() => {
     var arr = [];
@@ -34,9 +35,18 @@ const TestsWithWhiteNoise = () => {
           aria-label="basic tabs example"
           centered
         >
-          <Tab label="Testas A" {...a11yProps(0)} />
-          <Tab label="Testas B" {...a11yProps(1)} />
-          <Tab label="Testas C" {...a11yProps(2)} />
+          <Tab
+            label={language === "LT" ? "Testas A" : "Test A"}
+            {...a11yProps(0)}
+          />
+          <Tab
+            label={language === "LT" ? "Testas B" : "Test B"}
+            {...a11yProps(1)}
+          />
+          <Tab
+            label={language === "LT" ? "Testas C" : "Test C"}
+            {...a11yProps(2)}
+          />
         </Tabs>
       </Box>
       <TabPanel value={value} index={testOrder[0]}>
