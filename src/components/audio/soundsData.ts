@@ -1,77 +1,132 @@
 export interface PatientData {
+  fileName: string;
   name: string;
+  nameEnglish: string;
   information: string;
+  informationEnglish: string;
 }
 
 export const patientsPracticeArray: PatientData[] = [
   {
-    name: "H_014_Control",
-    information: "Karkalų nėra.",
+    fileName: "H_014_Control",
+    name: "36 metų, vyras",
+    nameEnglish: "36-year-old man",
+    information: "Plaučių alsavimas vezikulinis be karkalų.",
+    informationEnglish: "Only normal lung sounds are audible.",
   },
   {
-    name: "H_015_Control",
-    information: "Karkalų nėra.",
+    fileName: "H_015_Control",
+    name: "32 metų, moteris",
+    nameEnglish: "32-year-old woman",
+    information: "Plaučių alsavimas vezikulinis be karkalų.",
+    informationEnglish: "Only normal lung sounds are audible.",
   },
   {
-    name: "A_006",
+    fileName: "A_006",
+    name: "70 metų, vyras",
+    nameEnglish: "70-year-old man",
+    information: "Plaučių alsavimas vezikulinis be karkalų.",
+    informationEnglish: "Only normal lung sounds are audible.",
+  },
+  {
+    fileName: "A_027",
+    name: "75 metų, vyras",
+    nameEnglish: "75-year-old man",
+    information: "Girdimi sausi karkalai.",
+    informationEnglish: "Adventitious wheezes are audible.",
+  },
+  {
+    fileName: "A_022",
+    name: "77 metų, vyras",
+    nameEnglish: "77-year-old man",
+    information: "Girdimi sausi karkalai.",
+    informationEnglish: "Adventitious wheezes are audible.",
+  },
+  {
+    fileName: "KL_023",
+    name: "50 metų, vyras",
+    nameEnglish: "50-year-old man",
+    information: "Girdimi drėgni karkalai.",
+    informationEnglish: "Adventitious crackles are audible.",
+  },
+  {
+    fileName: "KL_051",
+    name: "90 metų, vyras",
+    nameEnglish: "90-year-old man",
+    information: "Girdimi drėgni karkalai.",
+    informationEnglish: "Adventitious crackles are audible.",
+  },
+  {
+    fileName: "H_004",
+    name: "83 metų, vyras",
+    nameEnglish: "83-year-old man",
+    information: "Giridimi drėgni ir sausi karkalai.",
+    informationEnglish:
+      "Mixed adventitous lung sounds are audible (wheezes and crackles).",
+  },
+  {
+    fileName: "KL_015",
+    name: "94 metų, moteris",
+    nameEnglish: "94-year-old woman",
+    information: "Giridimi drėgni ir sausi karkalai.",
+    informationEnglish:
+      "Mixed adventitous lung sounds are audible (wheezes and crackles).",
+  },
+  {
+    fileName: "A_001",
+    name: "56 metų, moteris",
+    nameEnglish: "56-year-old woman",
     information:
-      "Karkalų nėra. HL, IŠL, Prostatos piktybinis navikas, mišri hiperlipidemia",
+      "Plaučių alsavimas vezikulinis be karkalų, bet girdimi papildomi artefaktai.",
+    informationEnglish:
+      "Patient without pathological lung sounds, but with audio artifacts.",
   },
   {
-    name: "A_001",
-    information: "Karkalų nėra.",
-  },
-  {
-    name: "A_016",
-    information: "Karkalų nėra.",
-  },
-  {
-    name: "A_027",
-    information: "Sausi karkalai. Širdies nepakankamumas ir LOPL.",
-  },
-  {
-    name: "A_022",
-    information: "Sausi karkalai. Astma.",
-  },
-  {
-    name: "KL_023",
-    information: "Drėgni karkalai. Pneumonija.",
-  },
-  {
-    name: "KL_051",
-    information: "Drėgni karkalai. Anemija, IŠL, ŠNn HL, lėt.PV Podagra.",
-  },
-  {
-    name: "H_004",
-    information: "Mišrūs karkalai. Širdies nepakankamumas.",
-  },
-  {
-    name: "KL_015",
+    fileName: "A_016",
+    name: "86 metų, moteris",
+    nameEnglish: "86-year-old woman",
     information:
-      "Mišrūs karkalai. ISL, SN,IMPLANT ECS, AVAJO 2019,HL INF, ne dgn. reumatoidinis artritas.",
+      "Plaučių alsavimas vezikulinis be karkalų, bet girdimi papildomi artefaktai.",
+    informationEnglish:
+      "Patient without pathological lung sounds, but with audio artifacts.",
   },
 ];
 
 export const singlePracticeSounds: PatientData[] = [
   {
+    fileName: "A_008_4",
     name: "A_008_4",
+    nameEnglish: "A_008_4",
     information: "Bronchovezikulinis",
+    informationEnglish: "Brochialvesicular",
   },
   {
+    fileName: "Brochial_001",
     name: "Brochial_001",
+    nameEnglish: "Brochial_001",
     information: "Bronchinis",
+    informationEnglish: "Bronchial",
   },
   {
+    fileName: "A_008_6",
     name: "A_008_6",
+    nameEnglish: "A_008_6",
     information: "Vezikulinis",
+    informationEnglish: "Vesicular",
   },
   {
+    fileName: "KL_055_5",
     name: "KL_055_5",
+    nameEnglish: "KL_055_5",
     information: "Drėgni karkalai",
+    informationEnglish: "Crackles",
   },
   {
+    fileName: "A_022_3",
     name: "A_022_3",
+    nameEnglish: "A_022_3",
     information: "Sausi karkalai",
+    informationEnglish: "Wheezes",
   },
 ];
 
