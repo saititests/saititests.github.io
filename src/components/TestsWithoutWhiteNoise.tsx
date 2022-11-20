@@ -1,12 +1,13 @@
 import { Box, Tab, Tabs } from "@mui/material";
-import React, { useState } from "react";
-import { TabPanel, a11yProps } from "../App";
+import { LanguageContext, TabPanel, a11yProps } from "../App";
+import React, { useContext, useState } from "react";
 import Test, { TestType } from "./Test";
 
 import { test1Array } from "./audio/soundsData";
 
 const TestsWithoutWhiteNoise = () => {
   const [value, setValue] = useState(0);
+  const { language } = useContext(LanguageContext);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -21,8 +22,22 @@ const TestsWithoutWhiteNoise = () => {
           aria-label="basic tabs example"
           centered
         >
-          <Tab label="Testas, atlikusiems apmokymus" {...a11yProps(0)} />
-          <Tab label="Testas, neatlikusiems apmokymų" {...a11yProps(1)} />
+          <Tab
+            label={
+              language === "LT"
+                ? "Testas, atlikusiems apmokymus"
+                : "Test with practice"
+            }
+            {...a11yProps(0)}
+          />
+          <Tab
+            label={
+              language === "LT"
+                ? "Testas, neatlikusiems apmokym7"
+                : "Test without practice"
+            }
+            {...a11yProps(1)}
+          />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
