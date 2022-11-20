@@ -9,8 +9,9 @@ import {
   Select,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
+import { LanguageContext } from "../../App";
 import { TestPatientData } from "../audio/soundsData";
 import backPhoto from "../images/backPhoto.jpg";
 
@@ -48,6 +49,8 @@ const TestPatient = (props: PatientProps) => {
   const [soundFiles, setSoundFiles] = useState<string[]>([]);
   const [currentAudioIndex, setCurrentAudioIndex] = useState<string>("");
   const [checked, setChecked] = useState(false);
+
+  const { language } = useContext(LanguageContext);
 
   useEffect(() => {
     function loadSounds() {
@@ -155,14 +158,23 @@ const TestPatient = (props: PatientProps) => {
         </Grid>
         <Grid item xs={6}>
           <Box>
-            <Typography sx={{ mt: 6 }}>Pacientas {index}</Typography>
             <Typography sx={{ mt: 6 }}>
-              <strong>Dabar leidžiamas įrašas: {currentAudioIndex}</strong>
+              {language === "LT" ? "Pacientas" : "Patient"} {index}
+            </Typography>
+            <Typography sx={{ mt: 6 }}>
+              <strong>
+                {language === "LT"
+                  ? "Dabar leidžiamas įrašas"
+                  : "Currently playing audio"}
+                : {currentAudioIndex}
+              </strong>
             </Typography>
             <Box>
               <FormControl sx={{ mt: 2 }}>
                 <Typography>
-                  Girdima patologija? {/* Pathology found? */}
+                  {language === "LT"
+                    ? "Girdima patologija?"
+                    : "Pathology found?"}
                 </Typography>
                 <Checkbox
                   checked={checked}
@@ -174,21 +186,23 @@ const TestPatient = (props: PatientProps) => {
             {checked && (
               <FormControl sx={{ mt: 1 }}>
                 <InputLabel id={fieldName}>
-                  Patologijos tipas{/* Pathology type */}
+                  {language === "LT" ? "Patologijos tipas" : "Pathology type"}
                 </InputLabel>
                 <Select
                   name={fieldName}
                   id={fieldName}
-                  label="Pathology type"
+                  label={
+                    language === "LT" ? "Patologijos tipas" : "Pathology type"
+                  }
                   value={value}
                   onChange={handleInputChange}
                   sx={{ width: 250 }}
                 >
                   <MenuItem key="sausi" value="sausi">
-                    Sausi karkalai
+                    {language === "LT" ? "Sausi karkalai" : "Wheezes"}
                   </MenuItem>
                   <MenuItem key="dregni" value="dregni">
-                    Drėgni karkalai
+                    {language === "LT" ? "Drėgni karkalai" : "Crackles"}
                   </MenuItem>
                 </Select>
               </FormControl>
