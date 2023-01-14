@@ -33,7 +33,7 @@ const TestsWithoutWhiteNoise = () => {
           <Tab
             label={
               language === "LT"
-                ? "Testas, neatlikusiems apmokym7"
+                ? "Testas, neatlikusiems apmokymų"
                 : "Test without practice"
             }
             {...a11yProps(1)}
