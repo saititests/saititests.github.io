@@ -55,7 +55,7 @@ const Practice = () => {
         !error &&
         patientsPracticeArray.map((patient) => (
           <PracticePatient
-            key={patient.name}
+            key={patient.fileName}
             patient={patient}
             soundsDisabled={soundsDisabled}
             setSoundsDisabled={setSoundsDisabled}
