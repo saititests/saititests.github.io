@@ -65,7 +65,7 @@ const App = () => {
               color: "#1976d2",
             }}
           >
-            {language === "LT" ? "SAITI versija 1.0" : "SAITI version 1.0"}
+            {language === "LT" ? "SAITI versija 2.0" : "SAITI version 2.0"}
           </Typography>
           <Box
             sx={{
@@ -99,12 +99,12 @@ const App = () => {
             <Typography sx={{ fontWeight: 600, fontSize: 20 }}>
               {language === "LT"
                 ? "Plaučių garsų mokymo el. centras"
-                : "Learn your adventitious lung sounds online"}
+                : "Learning lung sounds online"}
             </Typography>
             <Typography sx={{ mb: 1, fontWeight: 400, fontSize: 14 }}>
               {language === "LT"
-                ? "Mes siekiame progreso, todėl prašome informuoti gyd. Haroldą Razvadauską jei yra/pastebėjote/iškilo problemų naudojantis tinklalapiu."
-                : "We look forward to developing the site further. Hence, please Haroldas Razvadauskas MD of any mistakes or issues you might come across using this website."}
+                ? "Mes siekiame progreso, todėl prašome užpildyti formą jei yra/pastebėjote/iškilo problemų naudojantis tinklalapiu. https://forms.gle/kJoPqRYy2v6sXMNw8"
+                : "We look forward to developing and improving the website and the study. Hence, if you have additional comments, please fill in the following form: https://forms.gle/AkcaEarGqk12xmrQ7"}
             </Typography>
           </Box>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
