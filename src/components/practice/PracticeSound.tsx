@@ -17,7 +17,13 @@ interface PatientProps {
 const PracticePatient = (props: PatientProps) => {
   const { patient, soundsDisabled, setSoundsDisabled, studentID, error } =
     props;
-  const { name, information, informationEnglish } = patient;
+  const {
+    name,
+    information,
+    informationEnglish,
+    singleSoundName,
+    singleSoundNameEnglish,
+  } = patient;
   const [soundFile, setSoundFile] = useState<string>("");
 
   const { language } = useContext(LanguageContext);
@@ -56,13 +62,19 @@ const PracticePatient = (props: PatientProps) => {
   return (
     <Box sx={{ mb: 3 }}>
       <Grid container spacing={8}>
-        <Grid item xs={6} textAlign="end">
+        <Grid item xs={4} textAlign="end">
+          <Typography sx={{ mt: 0.75 }} fontWeight={600}>
+            {language === "LT" ? singleSoundName : singleSoundNameEnglish}
+          </Typography>
+        </Grid>
+        <Grid item xs={4} textAlign="end">
           <Typography sx={{ mt: 0.75 }}>
             {language === "LT" ? information : informationEnglish}
           </Typography>
         </Grid>
-        <Grid item xs={6} textAlign="left">
+        <Grid item xs={4} textAlign="left">
           <Button
+            sx={{ mt: 1 }}
             variant="contained"
             onClick={() => playAudio()}
             disabled={soundsDisabled || studentID === "" || error}
