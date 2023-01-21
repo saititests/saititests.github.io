@@ -1,4 +1,4 @@
-import { TextField, Typography } from "@mui/material";
+import { Box, Divider, TextField, Typography } from "@mui/material";
 import {
   patientsPracticeArray,
   singlePracticeSounds,
@@ -78,6 +78,14 @@ const Practice = () => {
               error={error}
             />
           ))}
+          <Box sx={{ width: "100%", marginTop: 2 }}>
+            <Divider />
+            <Typography sx={{ pt: 1.5 }}>
+              {language === "LT"
+                ? "Plaučių garsų apibūdinimai, aprašyti pagal vadovėlį: Naudžiūnas, A. et. al. (2019). Vidaus ligų diagnostikos pagrindai. Vitae Litera."
+                : "Descriptions of lung sounds is according to the textbook; Naudžiūnas, A. et. al. (2021). Basics of medical diagnostics and the main clinical syndromes: for the 2nd and 3rd year medical students. Vitae Litera."}
+            </Typography>
+          </Box>
         </>
       )}
     </div>
