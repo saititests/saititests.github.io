@@ -83,8 +83,9 @@ const PracticePatient = (props: PatientProps) => {
     const credentials = Realm.Credentials.anonymous();
     try {
       const user = await app.logIn(credentials);
+      const id = studentID.replace(/[^0-9]/g, "");
       await user.functions.setTrainingData({
-        _id: Number(studentID),
+        _id: Number(id),
         date: new Date(),
       });
     } catch (err) {
