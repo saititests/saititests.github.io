@@ -100,8 +100,9 @@ const Test = ({ patientArray, type }: TestProps) => {
     const credentials = Realm.Credentials.anonymous();
     try {
       const user = await app.logIn(credentials);
+      const id = formValues.studentID.replace(/[^0-9]/g, "");
       const trainingData: TrainingData =
-        await user.functions.getOneTrainingData(Number(formValues.studentID));
+        await user.functions.getOneTrainingData(Number(id));
 
       const valuesFull = valuesCopy;
       valuesFull.actualLastStudied = trainingData.date.toString();
