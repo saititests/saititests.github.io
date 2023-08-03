@@ -1,12 +1,12 @@
 import Test, { TestType } from "./Test";
 
 import { Box } from "@mui/material";
-import { test4Array } from "./audio/soundsData";
+import { test1Array } from "./audio/soundsData";
 
 const TestsWithoutWhiteNoise = () => {
   return (
     <Box sx={{ width: "100%" }}>
-      <Test patientArray={test4Array} type={TestType.Regular} />
+      <Test patientArray={test1Array} type={TestType.Regular} />
     </Box>
   );
 };
